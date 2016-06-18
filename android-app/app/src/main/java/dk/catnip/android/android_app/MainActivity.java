@@ -23,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonB;
     private Button buttonC;
     private Button buttonD;
+    private TextView scoreText;
 
     private List<Question> questions = new ArrayList<>();
     private int counter = 0;
 
     private int correctAnswer;
+    private boolean isAnswered = false;
+    private int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         buttonC = (Button) findViewById(R.id.button_c);
         buttonD = (Button) findViewById(R.id.button_d);
         questionText = (TextView) findViewById(R.id.text_question);
+        scoreText = (TextView) findViewById(R.id.text_pts);
 
         //setup questions
         questions.add(new Question("How old is Daniel", "10", "20", "23", "30", 3));
@@ -55,47 +59,65 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonClick(View v) {
-        resetButtons();
+        if (!isAnswered) {
+            resetButtons();
+            boolean isCorrect = false;
 
-        switch (v.getId()) {
-            case R.id.button_a:
-                if (correctAnswer == 1) {
-                    setButtonColor(buttonA, GREEN);
-                } else {
-                    setButtonColor(buttonA, RED);
-                }
-                break;
-            case R.id.button_b:
-                if (correctAnswer == 2) {
-                    setButtonColor(buttonB, GREEN);
-                } else {
-                    setButtonColor(buttonB, RED);
-                }
-                break;
-            case R.id.button_c:
-                if (correctAnswer == 3) {
-                    setButtonColor(buttonC, GREEN);
-                } else {
-                    setButtonColor(buttonC, RED);
-                }
-                break;
-            case R.id.button_d:
-                if (correctAnswer == 4) {
-                    setButtonColor(buttonD, GREEN);
-                } else {
-                    setButtonColor(buttonD, RED);
-                }
-                break;
+            switch (v.getId()) {
+                case R.id.button_a:
+                    if (correctAnswer == 1) {
+                        setButtonColor(buttonA, GREEN);
+                        isCorrect = true;
+                    } else {
+                        setButtonColor(buttonA, RED);
+                    }
+                    break;
+                case R.id.button_b:
+                    if (correctAnswer == 2) {
+                        setButtonColor(buttonB, GREEN);
+                        isCorrect = true;
+                    } else {
+                        setButtonColor(buttonB, RED);
+                    }
+                    break;
+                case R.id.button_c:
+                    if (correctAnswer == 3) {
+                        setButtonColor(buttonC, GREEN);
+                        isCorrect = true;
+                    } else {
+                        setButtonColor(buttonC, RED);
+                    }
+                    break;
+                case R.id.button_d:
+                    if (correctAnswer == 4) {
+                        setButtonColor(buttonD, GREEN);
+                        isCorrect = true;
+                    } else {
+                        setButtonColor(buttonD, RED);
+                    }
+                    break;
+            }
+
+            if (isCorrect) {
+                score += 50;
+            } else {
+                score -= 50;
+            }
+
+            scoreText.setText(score + "");
+            isAnswered = true;
         }
     }
 
     public void nextQuestion(View v) {
-        if (counter >= questions.size()) {
-            counter = 0;
+        if (isAnswered) {
+            if (counter >= questions.size()) {
+                counter = 0;
+            }
+            setupQuestion(questions.get(counter));
+            counter++;
+            resetButtons();
         }
-        setupQuestion(questions.get(counter));
-        counter++;
-        resetButtons();
     }
 
     private void setupQuestion(Question question) {
@@ -105,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         buttonC.setText(question.getAnswerC());
         buttonD.setText(question.getAnswerD());
         correctAnswer = question.getCorrectAnswer();
+        isAnswered = false;
     }
 
     private void resetButtons() {
