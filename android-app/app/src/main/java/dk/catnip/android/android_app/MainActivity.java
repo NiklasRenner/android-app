@@ -63,10 +63,6 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new Question("Who invented the TV?", "Harry Styles", "Michael Jackson", "Philo Farnsworth", "Ann Wilson", ButtonId.C));
         questions.add(new Question("Who like donoughts most", "Biever", "Homer", "Mickey", "Batman", ButtonId.B));
 
-
-        
-
-
         //set first question on view
         setupQuestion(questions.get(counter));
         counter++;
@@ -82,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 setButtonColor(buttons[id.getId()], GREEN);
             } else {
                 setButtonColor(buttons[id.getId()], RED);
+                setButtonColor(buttons[correctAnswer.getId()], GREEN);
                 score -= 50;
             }
 
