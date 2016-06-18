@@ -59,7 +59,7 @@ public class QuizActivity extends AppCompatActivity {
         questions.add(new Question("Spot the non-president guy", "James Madison", "John Quincy Adams", "Zachary Taylor", "William McKinley", ButtonId.D));
         questions.add(new Question("Ah my name is, who my name is", "Eminem", "Slim shady", "Thikathika", "looool", ButtonId.C));
         questions.add(new Question("How many legs does a spider have", "4", "8", "7", "9", ButtonId.B));
-        questions.add(new Question("46*77 EvilMe!", "2942", "3542", "4277", "3842", ButtonId.B));
+        questions.add(new Question("46 * 77 =? Multiply Baby!", "2942", "3542", "4277", "3842", ButtonId.B));
         questions.add(new Question("What animal is strongest", "a mice", "The bat", "Snakes!", "Le SnailBoy", ButtonId.D));
         questions.add(new Question("Now push the secend button", "first", "secend", "secend", "Last", ButtonId.B));
         questions.add(new Question("What is a meme", "Cartoon", "Books", "Interweb stuff", "Cheeseburger", ButtonId.C));
