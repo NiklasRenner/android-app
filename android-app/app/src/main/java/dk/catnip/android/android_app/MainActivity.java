@@ -53,10 +53,17 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new Question("Where is Christiania located?", "Sweden", "Norway", "Denmark", "Germany", ButtonId.C));
         questions.add(new Question("What is a strawberry?", "A fruit", "a nut art", "None of the aboove", "mE liKe Quiz!", ButtonId.B));
         questions.add(new Question("Do you sleep with teddys?", "Hell no!", "Maybe tihi", "YES", "Nah", ButtonId.D));
-        questions.add(new Question("Spot the non-president guy", "James Madison", "John Quincy Adams", "Zachary Taylor", "I dont like presidents, and ehm a guy from the past, yea", ButtonId.D));
+        questions.add(new Question("Spot the non-president guy", "James Madison", "John Quincy Adams", "Zachary Taylor", "William McKinley", ButtonId.D));
         questions.add(new Question("Ah my name is, who my name is", "Eminem", "Slim shady", "Thikathika", "looool", ButtonId.C));
         questions.add(new Question("How many legs does a spider have", "4", "8", "7", "9", ButtonId.B));
-        questions.add(new Question("Once upon a time!", "a saw a squirrel", "i'll poop", "i ran into a tree", "I dont got time for stories,fool", ButtonId.D));
+        questions.add(new Question("46*77! EvilMe!", "2942", "3542", "4277", "3842", ButtonId.B));
+        questions.add(new Question("What animal is strongest", "a mice", "The bat", "Snakes!", "Le SnailBoy", ButtonId.D));
+        questions.add(new Question("Now push the secend button", "first", "secend", "secend", "Last", ButtonId.B));
+        questions.add(new Question("What is a meme", "Cartoon", "Books", "Interweb stuff", "Cheeseburger", ButtonId.C));
+        questions.add(new Question("Who invented the TV?", "Harry Styles", "Michael Jackson", "Philo Farnsworth", "Ann Wilson", ButtonId.C));
+        questions.add(new Question("Who like donoughts most", "Biever", "Homer", "Mickey", "Batman", ButtonId.B));
+
+
         
 
 
