@@ -9,34 +9,58 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="dk.catnip.android.android_app.MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="63dp"
-        android:text="Hello World!" />
+        android:text="c"
+        android:id="@+id/button_c"
+        android:layout_below="@+id/button_a"
+        android:layout_alignStart="@+id/button_a"
+        android:layout_marginTop="31dp" />
 
     <Button
-        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="d"
+        android:id="@+id/button_d"
+        android:layout_marginEnd="33dp"
+        android:layout_alignTop="@+id/button_c"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="b"
+        android:id="@+id/button_b"
+        android:layout_alignTop="@+id/button_a"
+        android:layout_alignStart="@+id/button_d" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="a"
+        android:id="@+id/button_a"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="29dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Loading..."
+        android:id="@+id/text_question"
+        android:layout_marginBottom="76dp"
+        android:layout_above="@+id/button_b"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/button_next"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:onClick="doStuff"
-        android:text="New Button" />
-
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Switch"
-        android:id="@+id/switch1"
-        android:layout_marginBottom="36dp"
-        android:layout_above="@+id/textView"
-        android:layout_alignStart="@+id/button"
-        android:checked="true"
-        android:onClick="doSwitch"/>
+        android:layout_marginBottom="46dp" />
 
 </RelativeLayout>
