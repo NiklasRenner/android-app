@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new Question("Ah my name is, who my name is", "Eminem", "Slim shady", "Thikathika", "looool", ButtonId.C));
         questions.add(new Question("How many legs does a spider have", "4", "8", "7", "9", ButtonId.B));
         questions.add(new Question("Once upon a time!", "a saw a squirrel", "i'll poop", "i ran into a tree", "I dont got time for stories,fool", ButtonId.D));
-        
 
 
         //set first question on view
@@ -75,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 setButtonColor(buttons[id.getId()], GREEN);
             } else {
                 setButtonColor(buttons[id.getId()], RED);
+                setButtonColor(buttons[correctAnswer.getId()], GREEN);
                 score -= 50;
             }
 
