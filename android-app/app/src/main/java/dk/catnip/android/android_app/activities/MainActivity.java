@@ -1,5 +1,6 @@
 package dk.catnip.android.android_app.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,15 +23,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case QUIZ_CODE:
-                Intent i = new Intent(getApplicationContext(), EndActivity.class);
-                int score = data.getIntExtra("score", 0);
-                i.putExtra("score", score);
-                startActivityForResult(i, END_CODE);
+                if (resultCode == Activity.RESULT_OK) {
+                    showScore(data);
+                }
                 break;
             case END_CODE:
-                setContentView(R.layout.activity_main);
                 break;
         }
+    }
+
+    private void showScore(Intent data) {
+        Intent i = new Intent(getApplicationContext(), EndActivity.class);
+        int score = data.getIntExtra("score", 0);
+        i.putExtra("score", score);
+        startActivityForResult(i, END_CODE);
     }
 
     public void onStart(View v) {
