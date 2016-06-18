@@ -9,22 +9,103 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activities.EndActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="SCORE: 0"
-        android:id="@+id/text_score"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="107dp" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Try again"
         android:id="@+id/button_restart"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onRestart"/>
+        android:onClick="onRestart"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_1_text"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/button_restart"
+        android:layout_marginTop="58dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_2_text"
+        android:layout_below="@+id/highscore_1_text"
+        android:layout_alignEnd="@+id/highscore_1_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_3_text"
+        android:layout_below="@+id/highscore_2_text"
+        android:layout_alignEnd="@+id/highscore_2_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_4_text"
+        android:layout_below="@+id/highscore_3_text"
+        android:layout_alignEnd="@+id/highscore_3_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_5_text"
+        android:layout_below="@+id/highscore_4_text"
+        android:layout_alignEnd="@+id/highscore_4_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_6_text"
+        android:layout_below="@+id/highscore_5_text"
+        android:layout_alignEnd="@+id/highscore_5_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_7_text"
+        android:layout_below="@+id/highscore_6_text"
+        android:layout_alignEnd="@+id/highscore_6_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_8_text"
+        android:layout_below="@+id/highscore_7_text"
+        android:layout_alignEnd="@+id/highscore_7_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_9_text"
+        android:layout_below="@+id/highscore_8_text"
+        android:layout_alignEnd="@+id/highscore_8_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="name: 0"
+        android:id="@+id/highscore_10_text"
+        android:layout_below="@+id/highscore_9_text"
+        android:layout_alignEnd="@+id/highscore_9_text" />
 </RelativeLayout>
