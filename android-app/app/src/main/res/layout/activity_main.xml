@@ -10,57 +10,62 @@
     tools:context="dk.catnip.android.android_app.MainActivity">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="c"
-        android:id="@+id/button_c"
-        android:layout_below="@+id/button_a"
-        android:layout_alignStart="@+id/button_a"
-        android:layout_marginTop="31dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="d"
-        android:id="@+id/button_d"
-        android:layout_marginEnd="33dp"
-        android:layout_alignTop="@+id/button_c"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="b"
-        android:id="@+id/button_b"
-        android:layout_alignTop="@+id/button_a"
-        android:layout_alignStart="@+id/button_d" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="a"
         android:id="@+id/button_a"
-        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="29dp" />
+        android:layout_centerVertical="true"
+        android:layout_marginStart="29dp"
+        android:onClick="buttonClick"
+        android:text="a" />
+
+    <Button
+        android:id="@+id/button_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button_d"
+        android:layout_alignTop="@+id/button_a"
+        android:onClick="buttonClick"
+        android:text="b" />
+
+    <Button
+        android:id="@+id/button_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button_a"
+        android:layout_below="@+id/button_a"
+        android:layout_marginTop="31dp"
+        android:onClick="buttonClick"
+        android:text="c" />
+
+    <Button
+        android:id="@+id/button_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/button_c"
+        android:layout_marginEnd="33dp"
+        android:onClick="buttonClick"
+        android:text="d" />
 
     <TextView
+        android:id="@+id/text_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Loading..."
-        android:id="@+id/text_question"
-        android:layout_marginBottom="76dp"
         android:layout_above="@+id/button_b"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="76dp"
+        android:text="Loading..."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
+        android:id="@+id/button_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/button_next"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp" />
+        android:layout_marginBottom="46dp"
+        android:onClick="nextQuestion"
+        android:text="Next" />
 
 </RelativeLayout>
