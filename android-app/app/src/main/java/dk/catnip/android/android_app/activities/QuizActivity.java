@@ -1,4 +1,4 @@
-package dk.catnip.android.android_app;
+package dk.catnip.android.android_app.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,10 +12,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import dk.catnip.android.android_app.R;
 import dk.catnip.android.android_app.model.ButtonId;
 import dk.catnip.android.android_app.model.Question;
 
-public class MainActivity extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity {
 
     private final int GREY = 0xFFDDDDDD;
     private final int RED = 0xFFFF0000;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //init view
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_quiz);
 
         //get refs to components
         buttons[0] = (Button) findViewById(R.id.button_a);
@@ -70,16 +71,9 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new Question("What is the capitol of Burkino Faso", "mozambique", "Ouagadougou", "sierra leone", "Nigeria", ButtonId.B));
         questions.add(new Question("In Denmark we sounds like..", "Everyone else", "wolves", "Potatoes", "Old men", ButtonId.C));
 
-
-
         //set first question on view
         setupQuestion(questions.get(counter));
         counter++;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        resetGame();
     }
 
     public void buttonClick(View v) {
@@ -119,27 +113,16 @@ public class MainActivity extends AppCompatActivity {
     public void nextQuestion(View v) {
         if (isAnswered) {
             if (counter >= questions.size()) {
-                Intent i = new Intent(getApplicationContext(), EndActivity.class);
-                i.putExtra("score", score);
-                startActivityForResult(i, Activity.RESULT_OK); //TODO refac: fix request code if multiple activities
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("score", score);
+                setResult(Activity.RESULT_OK, resultIntent);
+                finish();
                 return;
             }
             setupQuestion(questions.get(counter));
             counter++;
             resetButtons();
         }
-    }
-
-    private void resetGame() {
-        score = 0;
-        isAnswered = false;
-
-        resetButtons();
-        scoreText.setText("0");
-
-        counter = 0;
-        setupQuestion(questions.get(counter));
-        counter++;
     }
 
     private void setupQuestion(Question question) {
