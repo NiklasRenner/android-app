@@ -19,9 +19,9 @@ import dk.catnip.android.android_app.model.Question;
 
 public class QuizActivity extends AppCompatActivity {
 
-    private final int GREY = 0xFFDDDDDD;
-    private final int RED = 0xFFFF0000;
-    private final int GREEN = 0xFF00FF00;
+    private static final int GREY = 0xFFDDDDDD;
+    private static final int RED = 0xFFFF0000;
+    private static final int GREEN = 0xFF00FF00;
 
     private TextView questionText;
     private Button[] buttons = new Button[4];

@@ -15,16 +15,12 @@ import dk.catnip.android.android_app.model.Entry;
 
 public class EndActivity extends AppCompatActivity {
 
-    private DataAccessor dao;
-
     private TextView[] entryTexts = new TextView[10];
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
-
-        dao = new DataAccessor(getApplicationContext());
         entryTexts[0] = (TextView) findViewById(R.id.highscore_1_text);
         entryTexts[1] = (TextView) findViewById(R.id.highscore_2_text);
         entryTexts[2] = (TextView) findViewById(R.id.highscore_3_text);
@@ -36,8 +32,8 @@ public class EndActivity extends AppCompatActivity {
         entryTexts[8] = (TextView) findViewById(R.id.highscore_9_text);
         entryTexts[9] = (TextView) findViewById(R.id.highscore_10_text);
 
+        DataAccessor dao = new DataAccessor(getApplicationContext());
         List<Entry> entries = dao.loadHighScore();
-
         for (int i = 0; i < entryTexts.length; i++) {
             Entry entry = entries.get(i);
             entryTexts[i].setText(String.format("%s: %s", entry.getName(), entry.getScore()));
