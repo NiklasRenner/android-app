@@ -13,15 +13,6 @@ public enum ButtonId {
         this.id = id;
     }
 
-    public static ButtonId fromInt(int i) {
-        for (ButtonId buttonId : ButtonId.values()) {
-            if (buttonId.id == i) {
-                return buttonId;
-            }
-        }
-        return UNDEFINED;
-    }
-
     public int getId() {
         return id;
     }

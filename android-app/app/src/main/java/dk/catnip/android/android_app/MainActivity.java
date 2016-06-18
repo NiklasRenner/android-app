@@ -1,5 +1,6 @@
 package dk.catnip.android.android_app;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -105,12 +106,27 @@ public class MainActivity extends AppCompatActivity {
     public void nextQuestion(View v) {
         if (isAnswered) {
             if (counter >= questions.size()) {
-                counter = 0;
+                Intent i = new Intent(getApplicationContext(), EndActivity.class);
+                i.putExtra("score", score);
+                startActivity(i);
+                resetGame();
+                return;
             }
             setupQuestion(questions.get(counter));
             counter++;
             resetButtons();
         }
+    }
+
+    private void resetGame() {
+        score = 0;
+        isAnswered = false;
+
+        resetButtons();
+
+        counter = 0;
+        setupQuestion(questions.get(counter));
+        counter++;
     }
 
     private void setupQuestion(Question question) {
