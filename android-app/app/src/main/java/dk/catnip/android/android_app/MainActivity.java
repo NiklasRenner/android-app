@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         if (!isAnswered) {
             resetButtons();
 
-            ButtonId id = ButtonId.fromInt(v.getId());
+            ButtonId id = mapButtonId(v.getId());
             if (id == correctAnswer) {
                 score += 50;
                 setButtonColor(buttons[id.getId()], GREEN);
@@ -74,8 +74,23 @@ public class MainActivity extends AppCompatActivity {
                 score -= 50;
             }
 
-            scoreText.setText(score + "");
+            scoreText.setText(String.format("%s", score));
             isAnswered = true;
+        }
+    }
+
+    private ButtonId mapButtonId(int id) {
+        switch (id) {
+            case R.id.button_a:
+                return ButtonId.A;
+            case R.id.button_b:
+                return ButtonId.B;
+            case R.id.button_c:
+                return ButtonId.C;
+            case R.id.button_d:
+                return ButtonId.D;
+            default:
+                return ButtonId.UNDEFINED;
         }
     }
 
