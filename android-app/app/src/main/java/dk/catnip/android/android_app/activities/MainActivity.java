@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,10 +22,15 @@ public class MainActivity extends AppCompatActivity {
     private static final int QUIZ_CODE = 100;
     private static final int END_CODE = 105;
 
+    private TextView nameText;
+    private String name;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        nameText = (TextView) findViewById(R.id.text_player);
     }
 
     @Override
@@ -43,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
     private void showScore(Intent data) {
         Intent i = new Intent(getApplicationContext(), EndActivity.class);
         int score = data.getIntExtra("score", 0);
-        i.putExtra("score", saveScore("Niklas", score));
+        i.putExtra("score", saveScore(name, score));
         startActivityForResult(i, END_CODE);
     }
 
-    public void onHighscore(View v){
+    public void onHighscore(View v) {
         Intent i = new Intent(getApplicationContext(), EndActivity.class);
         i.putExtra("score", Entry.toCacheFormat(loadScore()));
         startActivityForResult(i, END_CODE);
@@ -55,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onStart(View v) {
         Intent i = new Intent(getApplicationContext(), QuizActivity.class);
+        name = nameText.getText().toString();
+        if (name.isEmpty()) {
+            nameText.setText("Player");
+            name = "Player";
+        }
         startActivityForResult(i, QUIZ_CODE);
     }
 
