@@ -10,9 +10,12 @@ import android.widget.TextView;
 import java.util.List;
 
 import dk.catnip.android.android_app.R;
+import dk.catnip.android.android_app.control.DataAccessor;
 import dk.catnip.android.android_app.model.Entry;
 
 public class EndActivity extends AppCompatActivity {
+
+    private DataAccessor dao;
 
     private TextView[] entryTexts = new TextView[10];
 
@@ -21,6 +24,7 @@ public class EndActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
 
+        dao = new DataAccessor(getApplicationContext());
         entryTexts[0] = (TextView) findViewById(R.id.highscore_1_text);
         entryTexts[1] = (TextView) findViewById(R.id.highscore_2_text);
         entryTexts[2] = (TextView) findViewById(R.id.highscore_3_text);
@@ -32,16 +36,15 @@ public class EndActivity extends AppCompatActivity {
         entryTexts[8] = (TextView) findViewById(R.id.highscore_9_text);
         entryTexts[9] = (TextView) findViewById(R.id.highscore_10_text);
 
-        String score = getIntent().getStringExtra("score");
-        List<Entry> entries = Entry.fromCacheFormat(score);
+        List<Entry> entries = dao.loadHighScore();
 
-        for (int i = 0; i < entryTexts.length; i++){
+        for (int i = 0; i < entryTexts.length; i++) {
             Entry entry = entries.get(i);
             entryTexts[i].setText(String.format("%s: %s", entry.getName(), entry.getScore()));
         }
     }
 
-    public void onRestart(View v) {
+    public void showMainMenu(View v) {
         Intent resultIntent = new Intent();
         setResult(Activity.RESULT_OK, resultIntent);
         finish();

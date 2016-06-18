@@ -12,9 +12,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Try again"
-        android:id="@+id/button_restart"
-        android:onClick="onRestart"
+        android:text="Main menu"
+        android:id="@+id/button_main_menu"
+        android:onClick="showMainMenu"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -25,7 +25,7 @@
         android:text="name: 0"
         android:id="@+id/highscore_1_text"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/button_restart"
+        android:layout_toStartOf="@+id/button_main_menu"
         android:layout_marginTop="58dp" />
 
     <TextView
@@ -108,4 +108,5 @@
         android:id="@+id/highscore_10_text"
         android:layout_below="@+id/highscore_9_text"
         android:layout_alignEnd="@+id/highscore_9_text" />
+
 </RelativeLayout>

@@ -1,13 +1,8 @@
 package dk.catnip.android.android_app.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import dk.catnip.android.android_app.utils.Constants;
 
 public class Entry implements Comparable<Entry> {
-
-    private static final String ENTRY_SEPARATOR = "::";
-    private static final String LINE_SEPARATOR = "|";
 
     private String name;
     private int score;
@@ -25,6 +20,12 @@ public class Entry implements Comparable<Entry> {
         return score;
     }
 
+    public static Entry fromString(String rawEntry) {
+        String[] pair = rawEntry.split(Constants.ENTRY_SEPARATOR);
+
+        return new Entry(pair[0], Integer.parseInt(pair[1]));
+    }
+
     @Override
     public int compareTo(Entry another) {
         if (score > another.getScore()) {
@@ -36,47 +37,8 @@ public class Entry implements Comparable<Entry> {
         }
     }
 
-    public static List<Entry> createDefault() {
-        List<Entry> entries = new ArrayList<>();
-
-        String[] names = new String[]{"Rolf", "Torsten", "Gunnar", "Mify", "Jorge"};
-        for (int i = 0; i < 10; i++) {
-            Entry entry = new Entry(names[(int) (Math.random() * 5)], (int) (Math.random() * 250));
-            entries.add(entry);
-        }
-
-        return entries;
+    @Override
+    public String toString() {
+        return String.format("%s%s%s", name, Constants.ENTRY_SEPARATOR, score);
     }
-
-    public static List<Entry> fromCacheFormat(String data) {
-        if (data == null) {
-            return null;
-        }
-
-        List<Entry> entries = new ArrayList<>();
-
-        String[] lines = data.split("\\|");
-        for (String line : lines) {
-            String[] rawEntry = line.split("::");
-            Entry entry = new Entry(rawEntry[0], Integer.parseInt(rawEntry[1]));
-            entries.add(entry);
-        }
-
-        Collections.sort(entries);
-        return entries;
-    }
-
-    public static String toCacheFormat(List<Entry> entries) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < 10; i++) {
-            Entry entry = entries.get(i);
-            builder.append(LINE_SEPARATOR);
-            builder.append(entry.getName());
-            builder.append(ENTRY_SEPARATOR);
-            builder.append(entry.getScore());
-        }
-
-        return builder.toString().substring(1);
-    }
-
 }
