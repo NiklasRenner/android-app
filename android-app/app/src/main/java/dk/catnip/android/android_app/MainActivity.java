@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import dk.catnip.android.android_app.model.ButtonId;
 import dk.catnip.android.android_app.model.Question;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,16 +20,13 @@ public class MainActivity extends AppCompatActivity {
     private final int GREEN = 0xFF00FF00;
 
     private TextView questionText;
-    private Button buttonA;
-    private Button buttonB;
-    private Button buttonC;
-    private Button buttonD;
+    private Button[] buttons = new Button[4];
     private TextView scoreText;
 
     private List<Question> questions = new ArrayList<>();
     private int counter = 0;
 
-    private int correctAnswer;
+    private ButtonId correctAnswer;
     private boolean isAnswered = false;
     private int score = 0;
 
@@ -39,19 +37,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //get refs to components
-        buttonA = (Button) findViewById(R.id.button_a);
-        buttonB = (Button) findViewById(R.id.button_b);
-        buttonC = (Button) findViewById(R.id.button_c);
-        buttonD = (Button) findViewById(R.id.button_d);
+        buttons[0] = (Button) findViewById(R.id.button_a);
+        buttons[1] = (Button) findViewById(R.id.button_b);
+        buttons[2] = (Button) findViewById(R.id.button_c);
+        buttons[3] = (Button) findViewById(R.id.button_d);
         questionText = (TextView) findViewById(R.id.text_question);
         scoreText = (TextView) findViewById(R.id.text_pts);
 
         //setup questions
-        questions.add(new Question("How old is Daniel", "10", "20", "23", "30", 3));
-        questions.add(new Question("How old is Niklas", "23", "5", "99", "30", 1));
-        questions.add(new Question("Which one of theese activites is illegal", "Drinking", "Swimming", "Walk on the grass", "Smoke weed", 2));
-        questions.add(new Question("Which letter i missing?", "t", "n", "s", "q", 3));
-        questions.add(new Question("How many irishmen in a bar?", "1", "2", "3", "INFINITY!", 4));
+        questions.add(new Question("How old is Daniel", "10", "20", "23", "30", ButtonId.C));
+        questions.add(new Question("How old is Niklas", "23", "5", "99", "30", ButtonId.A));
+        questions.add(new Question("Which one of theese activites is illegal", "Drinking", "Swimming", "Walk on the grass", "Smoke weed", ButtonId.B));
+        questions.add(new Question("Which letter i missing?", "t", "n", "s", "q", ButtonId.C));
+        questions.add(new Question("How many irishmen in a bar?", "1", "2", "3", "INFINITY!", ButtonId.D));
 
         //set first question on view
         setupQuestion(questions.get(counter));
@@ -61,46 +59,13 @@ public class MainActivity extends AppCompatActivity {
     public void buttonClick(View v) {
         if (!isAnswered) {
             resetButtons();
-            boolean isCorrect = false;
 
-            switch (v.getId()) {
-                case R.id.button_a:
-                    if (correctAnswer == 1) {
-                        setButtonColor(buttonA, GREEN);
-                        isCorrect = true;
-                    } else {
-                        setButtonColor(buttonA, RED);
-                    }
-                    break;
-                case R.id.button_b:
-                    if (correctAnswer == 2) {
-                        setButtonColor(buttonB, GREEN);
-                        isCorrect = true;
-                    } else {
-                        setButtonColor(buttonB, RED);
-                    }
-                    break;
-                case R.id.button_c:
-                    if (correctAnswer == 3) {
-                        setButtonColor(buttonC, GREEN);
-                        isCorrect = true;
-                    } else {
-                        setButtonColor(buttonC, RED);
-                    }
-                    break;
-                case R.id.button_d:
-                    if (correctAnswer == 4) {
-                        setButtonColor(buttonD, GREEN);
-                        isCorrect = true;
-                    } else {
-                        setButtonColor(buttonD, RED);
-                    }
-                    break;
-            }
-
-            if (isCorrect) {
+            ButtonId id = ButtonId.fromInt(v.getId());
+            if (id == correctAnswer) {
                 score += 50;
+                setButtonColor(buttons[id.getId()], GREEN);
             } else {
+                setButtonColor(buttons[id.getId()], RED);
                 score -= 50;
             }
 
@@ -122,19 +87,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupQuestion(Question question) {
         questionText.setText(question.getQuestion());
-        buttonA.setText(question.getAnswerA());
-        buttonB.setText(question.getAnswerB());
-        buttonC.setText(question.getAnswerC());
-        buttonD.setText(question.getAnswerD());
+        buttons[0].setText(question.getAnswerA());
+        buttons[1].setText(question.getAnswerB());
+        buttons[2].setText(question.getAnswerC());
+        buttons[3].setText(question.getAnswerD());
         correctAnswer = question.getCorrectAnswer();
         isAnswered = false;
     }
 
     private void resetButtons() {
-        setButtonColor(buttonA, GREY);
-        setButtonColor(buttonB, GREY);
-        setButtonColor(buttonC, GREY);
-        setButtonColor(buttonD, GREY);
+        for (Button button : buttons) {
+            setButtonColor(button, GREY);
+        }
     }
 
     private void setButtonColor(Button button, int color) {

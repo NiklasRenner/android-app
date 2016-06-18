@@ -7,9 +7,9 @@ public class Question {
     private String answerB;
     private String answerC;
     private String answerD;
-    private int correctAnswer;
+    private ButtonId correctAnswer;
 
-    public Question(String question, String answerA, String answerB, String answerC, String answerD, int correctAnswer) {
+    public Question(String question, String answerA, String answerB, String answerC, String answerD, ButtonId correctAnswer) {
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
@@ -38,7 +38,7 @@ public class Question {
         return answerD;
     }
 
-    public int getCorrectAnswer() {
+    public ButtonId getCorrectAnswer() {
         return correctAnswer;
     }
 }
