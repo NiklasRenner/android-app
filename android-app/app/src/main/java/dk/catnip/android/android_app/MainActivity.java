@@ -1,5 +1,6 @@
 package dk.catnip.android.android_app;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -69,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
         counter++;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        resetGame();
+    }
+
     public void buttonClick(View v) {
         if (!isAnswered) {
             resetButtons();
@@ -108,8 +114,7 @@ public class MainActivity extends AppCompatActivity {
             if (counter >= questions.size()) {
                 Intent i = new Intent(getApplicationContext(), EndActivity.class);
                 i.putExtra("score", score);
-                startActivity(i);
-                resetGame();
+                startActivityForResult(i, Activity.RESULT_OK); //TODO refac: fix request code if multiple activities
                 return;
             }
             setupQuestion(questions.get(counter));
@@ -123,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
         isAnswered = false;
 
         resetButtons();
+        scoreText.setText("0");
 
         counter = 0;
         setupQuestion(questions.get(counter));

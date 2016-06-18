@@ -1,5 +1,7 @@
 package dk.catnip.android.android_app;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +21,8 @@ public class EndActivity extends AppCompatActivity {
     }
 
     public void onRestart(View v) {
+        Intent resultIntent = new Intent();
+        setResult(Activity.RESULT_OK, resultIntent);
         finish();
     }
 
