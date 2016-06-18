@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new Question("How old is Niklas", "23", "5", "99", "30", 1));
         questions.add(new Question("Which one of theese activites is illegal", "Drinking", "Swimming", "Walk on the grass", "Smoke weed", 2));
         questions.add(new Question("Which letter i missing?", "t", "n", "s", "q", 3));
-        questions.add(new Question("How many irishmen in a bar?", "1", "2", "3", "INFINITY!", 4);
+        questions.add(new Question("How many irishmen in a bar?", "1", "2", "3", "INFINITY!", 4));
 
         //set first question on view
         setupQuestion(questions.get(counter));
