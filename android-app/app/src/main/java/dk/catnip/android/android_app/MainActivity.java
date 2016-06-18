@@ -58,12 +58,19 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new Question("Spot the non-president guy", "James Madison", "John Quincy Adams", "Zachary Taylor", "William McKinley", ButtonId.D));
         questions.add(new Question("Ah my name is, who my name is", "Eminem", "Slim shady", "Thikathika", "looool", ButtonId.C));
         questions.add(new Question("How many legs does a spider have", "4", "8", "7", "9", ButtonId.B));
-        questions.add(new Question("46*77! EvilMe!", "2942", "3542", "4277", "3842", ButtonId.B));
+        questions.add(new Question("46*77 EvilMe!", "2942", "3542", "4277", "3842", ButtonId.B));
         questions.add(new Question("What animal is strongest", "a mice", "The bat", "Snakes!", "Le SnailBoy", ButtonId.D));
         questions.add(new Question("Now push the secend button", "first", "secend", "secend", "Last", ButtonId.B));
         questions.add(new Question("What is a meme", "Cartoon", "Books", "Interweb stuff", "Cheeseburger", ButtonId.C));
         questions.add(new Question("Who invented the TV?", "Harry Styles", "Michael Jackson", "Philo Farnsworth", "Ann Wilson", ButtonId.C));
         questions.add(new Question("Who like donoughts most", "Biever", "Homer", "Mickey", "Batman", ButtonId.B));
+        questions.add(new Question("What does a wooodchopper", "Fly", "Chop wood", "Wearing big pants", "i dont know", ButtonId.A));
+        questions.add(new Question("What came first", "The egg", "The chicken", "Aliens", "Fishes!", ButtonId.B));
+        questions.add(new Question("What will kill you fastest?", "Smoking", "Eat McD", "be 50 Cent", "Drink 15L at once", ButtonId.D));
+        questions.add(new Question("What is the capitol of Burkino Faso", "mozambique", "Ouagadougou", "sierra leone", "Nigeria", ButtonId.B));
+        questions.add(new Question("In Denmark we sounds like..", "Everyone else", "wolves", "Potatoes", "Old men", ButtonId.C));
+
+
 
         //set first question on view
         setupQuestion(questions.get(counter));
