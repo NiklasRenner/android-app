@@ -28,4 +28,15 @@
         android:onClick="doStuff"
         android:text="New Button" />
 
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Switch"
+        android:id="@+id/switch1"
+        android:layout_marginBottom="36dp"
+        android:layout_above="@+id/textView"
+        android:layout_alignStart="@+id/button"
+        android:checked="true"
+        android:onClick="doSwitch"/>
+
 </RelativeLayout>
