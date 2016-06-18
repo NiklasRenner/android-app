@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new Question("Which one of theese activites is illegal", "Drinking", "Swimming", "Walk on the grass", "Smoke weed", ButtonId.B));
         questions.add(new Question("Which letter i missing?", "t", "n", "s", "q", ButtonId.C));
         questions.add(new Question("How many irishmen in a bar?", "1", "2", "3", "INFINITY!", ButtonId.D));
+        questions.add(new Question("Where is Christiania located?", "Sweden", "Norway", "Denmark", "Germany", ButtonId.C));
+        questions.add(new Question("What is a strawberry?", "A fruit", "a nut art", "None of the aboove", "mE liKe Quiz!", ButtonId.B));
+        questions.add(new Question("Do you sleep with teddys?", "Hell no!", "Maybe tihi", "YES", "Nah", ButtonId.D));
+        questions.add(new Question("Spot the non-president guy", "James Madison", "John Quincy Adams", "Zachary Taylor", "I dont like presidents, and ehm a guy from the past, yea", ButtonId.D));
+
 
         //set first question on view
         setupQuestion(questions.get(counter));
