@@ -78,7 +78,7 @@
       "answer_b": "Holy Street Performer",
       "answer_c": "Rings",
       "answer_d": "Castle",
-      "correct_answer": "d"
+      "correct_answer": "c"
     },
     {
       "question": "How many legs does a spider have",
@@ -87,6 +87,14 @@
       "answer_c": "7",
       "answer_d": "9",
       "correct_answer": "b"
-    }
+    },
+    {
+      "question": "",
+      "answer_a": "Chickens",
+      "answer_b": "Holy Street Performer",
+      "answer_c": "Rings",
+      "answer_d": "Castle",
+      "correct_answer": "c"
+    },
   ]
 }
