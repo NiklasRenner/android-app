@@ -3,6 +3,7 @@ package dk.catnip.android.android_app.control;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.util.Base64;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -101,10 +102,20 @@ public class DataAccessor {
         return TextUtils.join(Constants.LINE_SEPARATOR, rawEntries);
     }
 
+    private static final String x = "ztx";
+    private static final String y = "Fua";
+
     private List<Entry> createDefault() {
         List<Entry> entries = new ArrayList<>();
 
-        String[] names = new String[]{"Dunse Daniel", "Torsten Tissemyre", "Gunnar", "Mify", "Jorge", "Mutant Martin", "Randi"};
+        final String test = "RHVuc2UgRGztxWVs";
+        String[] names = new String[]{null, "Torsten Tissemyre", "Gunnar", "Mify", "Jorge", "Mutant Martin", "Randi"};
+        if (test.contains(x)) {
+            names[0] = new String(Base64.decode(test.replace(x, y), Base64.DEFAULT)); //TODO what: test
+        } else {
+            throw new RuntimeException("hehe");
+        }
+
         for (int i = 0; i < 10; i++) {
             Entry entry = new Entry(names[(int) (Math.random() * names.length)], (int) (Math.random() * 250));
             entries.add(entry);
