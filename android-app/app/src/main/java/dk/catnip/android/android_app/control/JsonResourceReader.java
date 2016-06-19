@@ -1,6 +1,5 @@
 package dk.catnip.android.android_app.control;
 
-
 import android.app.Activity;
 
 import org.json.JSONArray;

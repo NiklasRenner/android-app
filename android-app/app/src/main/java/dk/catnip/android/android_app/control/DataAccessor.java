@@ -104,9 +104,9 @@ public class DataAccessor {
     private List<Entry> createDefault() {
         List<Entry> entries = new ArrayList<>();
 
-        String[] names = new String[]{"Rolf", "Torsten", "Gunnar", "Mify", "Jorge"};
+        String[] names = new String[]{"Dunse Daniel", "Torsten Tissemyre", "Gunnar", "Mify", "Jorge", "Mutant Martin", "Randi"};
         for (int i = 0; i < 10; i++) {
-            Entry entry = new Entry(names[(int) (Math.random() * 5)], (int) (Math.random() * 250));
+            Entry entry = new Entry(names[(int) (Math.random() * names.length)], (int) (Math.random() * 250));
             entries.add(entry);
         }
 
