@@ -17,4 +17,20 @@ public enum ButtonId {
     public int getId() {
         return id;
     }
+
+    //TODO refac: make more dynamic
+    public static ButtonId fromString(String s) {
+        switch (s.toUpperCase()) {
+            case "A":
+                return A;
+            case "B":
+                return B;
+            case "C":
+                return C;
+            case "D":
+                return D;
+            default:
+                return UNDEFINED;
+        }
+    }
 }

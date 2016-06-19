@@ -14,6 +14,7 @@ import java.util.List;
 
 import dk.catnip.android.android_app.R;
 import dk.catnip.android.android_app.control.DataAccessor;
+import dk.catnip.android.android_app.control.JsonMapper;
 import dk.catnip.android.android_app.model.ButtonId;
 import dk.catnip.android.android_app.model.Question;
 import dk.catnip.android.android_app.utils.Constants;
@@ -52,28 +53,7 @@ public class QuizActivity extends AppCompatActivity {
         scoreText = (TextView) findViewById(R.id.text_pts);
 
         //setup questions
-        questions.add(new Question("How old is Daniel", "10", "20", "23", "30", ButtonId.C));
-        questions.add(new Question("How old is Niklas", "23", "5", "99", "30", ButtonId.A));
-        questions.add(new Question("Which one of theese activites is illegal", "Drinking", "Swimming", "Walk on the grass", "Smoke weed", ButtonId.B));
-        questions.add(new Question("Which letter i missing?", "t", "n", "s", "q", ButtonId.C));
-        questions.add(new Question("How many irishmen in a bar?", "1", "2", "3", "INFINITY!", ButtonId.D));
-        questions.add(new Question("Where is Christiania located?", "Sweden", "Norway", "Denmark", "Germany", ButtonId.C));
-        questions.add(new Question("What is a strawberry?", "A fruit", "a nut art", "None of the aboove", "mE liKe Quiz!", ButtonId.B));
-        questions.add(new Question("Do you sleep with teddys?", "Hell no!", "Maybe tihi", "YES", "Nah", ButtonId.D));
-        questions.add(new Question("Spot the non-president guy", "James Madison", "John Quincy Adams", "Zachary Taylor", "William McKinley", ButtonId.D));
-        questions.add(new Question("Ah my name is, who my name is", "Eminem", "Slim shady", "Thikathika", "looool", ButtonId.C));
-        questions.add(new Question("How many legs does a spider have", "4", "8", "7", "9", ButtonId.B));
-        questions.add(new Question("46 * 77 =? Multiply Baby!", "2942", "3542", "4277", "3842", ButtonId.B));
-        questions.add(new Question("What animal is strongest", "a mice", "The bat", "Snakes!", "Snails", ButtonId.D));
-        questions.add(new Question("Now push the secend button", "first", "secend", "secend", "Last", ButtonId.B));
-        questions.add(new Question("What is a meme", "Cartoon", "Books", "Interweb stuff", "Cheeseburger", ButtonId.C));
-        questions.add(new Question("Who invented the TV?", "Harry Styles", "Michael Jackson", "Philo Farnsworth", "Ann Wilson", ButtonId.C));
-        questions.add(new Question("Who like donoughts most", "Biever", "Homer", "Mickey", "Batman", ButtonId.B));
-        questions.add(new Question("What does a wooodchopper", "Fly", "Chop wood", "Wearing big pants", "i dont know", ButtonId.A));
-        questions.add(new Question("What came first", "The egg", "The chicken", "Aliens", "Fishes!", ButtonId.B));
-        questions.add(new Question("What will kill you fastest?", "Smoking", "Eat McD", "be 50 Cent", "Drink 15L at once", ButtonId.D));
-        questions.add(new Question("What is the capitol of Burkino Faso", "mozambique", "Ouagadougou", "sierra leone", "Nigeria", ButtonId.B));
-        questions.add(new Question("In Denmark we sounds like..", "Everyone else", "wolves", "Potatoes", "Old men", ButtonId.C));
+        questions = JsonMapper.loadQuestions(this, R.raw.default_questions);
 
         //set first question on view
         setupQuestion(questions.get(counter));
