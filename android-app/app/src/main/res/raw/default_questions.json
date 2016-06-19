@@ -128,5 +128,21 @@
       "answer_d": "Oslo",
       "correct_answer": "b"
     }
+    {
+      "question": "What is 7 Foot in meters",
+      "answer_a": "about 1 meter",
+      "answer_b": "about 2 meters",
+      "answer_c": "about 3 meters",
+      "answer_d": "about 4 meters",
+      "correct_answer": "b"
+    },
+    {
+      "question": "46 * 77 =?",
+      "answer_a": "2942",
+      "answer_b": "3842",
+      "answer_c": "4277",
+      "answer_d": "3542",
+      "correct_answer": "d"
+    }
   ]
 }
