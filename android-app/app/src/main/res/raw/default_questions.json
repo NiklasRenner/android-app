@@ -1,148 +1,146 @@
-{
-  "questions": [
-    {
-      "question": "Which year was Obama born",
-      "answer_a": "1967",
-      "answer_b": "1955",
-      "answer_c": "1961",
-      "answer_d": "1971",
-      "correct_answer": "c"
-    },
-    {
-      "question": "What is 10000 milliliters",
-      "answer_a": "1 L",
-      "answer_b": "10 L",
-      "answer_c": "100 L",
-      "answer_d": "1000 L",
-      "correct_answer": "b"
-    },
-    {
-      "question": "The cow says...",
-      "answer_a": "Muu",
-      "answer_b": "Quack",
-      "answer_c": "it says nothing",
-      "answer_d": "Mumbles",
-      "correct_answer": "a"
-    },
-    {
-      "question": "Which letter i missing?",
-      "answer_a": "T",
-      "answer_b": "S",
-      "answer_c": "N",
-      "answer_d": "Q",
-      "correct_answer": "b"
-    },
-    {
-      "question": "How many irishmen in a bar?",
-      "answer_a": "1",
-      "answer_b": "2",
-      "answer_c": "3",
-      "answer_d": "over 100",
-      "correct_answer": "b"
-    },
-    {
-      "question": "Where is Christiania located?",
-      "answer_a": "Sweden",
-      "answer_b": "Norway",
-      "answer_c": "Denmark",
-      "answer_d": "Germany",
-      "correct_answer": "c"
-    },
-    {
-      "question": "What is a strawberry?",
-      "answer_a": "A fruit",
-      "answer_b": "A nut art",
-      "answer_c": "its meat",
-      "answer_d": "Vegetables",
-      "correct_answer": "b"
-    },
-    {
-      "question": "What time of the day is 7pm",
-      "answer_a": "Morning",
-      "answer_b": "Afternoon",
-      "answer_c": "Night",
-      "answer_d": "Evening",
-      "correct_answer": "d"
-    },
-    {
-      "question": "Spot the non-president guy",
-      "answer_a": "James Madison",
-      "answer_b": "John Quincy Adams",
-      "answer_c": "Zachary Taylor",
-      "answer_d": "Thomas Edison",
-      "correct_answer": "d"
-    },
-    {
-      "question": "Lord of the....",
-      "answer_a": "Chickens",
-      "answer_b": "Holy Street Performer",
-      "answer_c": "Rings",
-      "answer_d": "Castle",
-      "correct_answer": "c"
-    },
-    {
-      "question": "How many legs does a spider have",
-      "answer_a": "4",
-      "answer_b": "8",
-      "answer_c": "7",
-      "answer_d": "9",
-      "correct_answer": "b"
-    },
-    {
-      "question": "How many pieces are there in chess",
-      "answer_a": "32",
-      "answer_b": "16",
-      "answer_c": "36",
-      "answer_d": "42",
-      "correct_answer": "a"
-    },
-    {
-      "question": "How many continents in the world?",
-      "answer_a": "6",
-      "answer_b": "7",
-      "answer_c": "8",
-      "answer_d": "9",
-      "correct_answer": "b"
-    },
-    {
-      "question": "How long was the Gulf War?",
-      "answer_a": "3 Years",
-      "answer_b": "2 Years",
-      "answer_c": "1 Year",
-      "answer_d": "About 6 Months",
-      "correct_answer": "d"
-    },
-    {
-      "question": "How many people live in Brazil",
-      "answer_a": "209 Millions",
-      "answer_b": "170 Millions",
-      "answer_c": "260 Millions",
-      "answer_d": "300 Millions",
-      "correct_answer": "a"
-    },
-    {
-      "question": "What is the capital of Lebanon",
-      "answer_a": "Bern",
-      "answer_b": "Beirut",
-      "answer_c": "Bissau",
-      "answer_d": "Oslo",
-      "correct_answer": "b"
-    },
-    {
-      "question": "What is 7 Foot in meters",
-      "answer_a": "about 1 meter",
-      "answer_b": "about 2 meters",
-      "answer_c": "about 3 meters",
-      "answer_d": "about 4 meters",
-      "correct_answer": "b"
-    },
-    {
-      "question": "46 * 77 =?",
-      "answer_a": "2942",
-      "answer_b": "3842",
-      "answer_c": "4277",
-      "answer_d": "3542",
-      "correct_answer": "d"
-    }
-  ]
-}
+[
+  {
+    "question": "Which year was Obama born",
+    "answer_a": "1967",
+    "answer_b": "1955",
+    "answer_c": "1961",
+    "answer_d": "1971",
+    "correct_answer": "c"
+  },
+  {
+    "question": "What is 10000 milliliters",
+    "answer_a": "1 L",
+    "answer_b": "10 L",
+    "answer_c": "100 L",
+    "answer_d": "1000 L",
+    "correct_answer": "b"
+  },
+  {
+    "question": "The cow says...",
+    "answer_a": "Muu",
+    "answer_b": "Quack",
+    "answer_c": "it says nothing",
+    "answer_d": "Mumbles",
+    "correct_answer": "a"
+  },
+  {
+    "question": "Which letter i missing?",
+    "answer_a": "T",
+    "answer_b": "S",
+    "answer_c": "N",
+    "answer_d": "Q",
+    "correct_answer": "b"
+  },
+  {
+    "question": "How many irishmen in a bar?",
+    "answer_a": "1",
+    "answer_b": "2",
+    "answer_c": "3",
+    "answer_d": "over 100",
+    "correct_answer": "b"
+  },
+  {
+    "question": "Where is Christiania located?",
+    "answer_a": "Sweden",
+    "answer_b": "Norway",
+    "answer_c": "Denmark",
+    "answer_d": "Germany",
+    "correct_answer": "c"
+  },
+  {
+    "question": "What is a strawberry?",
+    "answer_a": "A fruit",
+    "answer_b": "A nut art",
+    "answer_c": "its meat",
+    "answer_d": "Vegetables",
+    "correct_answer": "b"
+  },
+  {
+    "question": "What time of the day is 7pm",
+    "answer_a": "Morning",
+    "answer_b": "Afternoon",
+    "answer_c": "Night",
+    "answer_d": "Evening",
+    "correct_answer": "d"
+  },
+  {
+    "question": "Spot the non-president guy",
+    "answer_a": "James Madison",
+    "answer_b": "John Quincy Adams",
+    "answer_c": "Zachary Taylor",
+    "answer_d": "Thomas Edison",
+    "correct_answer": "d"
+  },
+  {
+    "question": "Lord of the....",
+    "answer_a": "Chickens",
+    "answer_b": "Holy Street Performer",
+    "answer_c": "Rings",
+    "answer_d": "Castle",
+    "correct_answer": "c"
+  },
+  {
+    "question": "How many legs does a spider have",
+    "answer_a": "4",
+    "answer_b": "8",
+    "answer_c": "7",
+    "answer_d": "9",
+    "correct_answer": "b"
+  },
+  {
+    "question": "How many pieces are there in chess",
+    "answer_a": "32",
+    "answer_b": "16",
+    "answer_c": "36",
+    "answer_d": "42",
+    "correct_answer": "a"
+  },
+  {
+    "question": "How many continents in the world?",
+    "answer_a": "6",
+    "answer_b": "7",
+    "answer_c": "8",
+    "answer_d": "9",
+    "correct_answer": "b"
+  },
+  {
+    "question": "How long was the Gulf War?",
+    "answer_a": "3 Years",
+    "answer_b": "2 Years",
+    "answer_c": "1 Year",
+    "answer_d": "About 6 Months",
+    "correct_answer": "d"
+  },
+  {
+    "question": "How many people live in Brazil",
+    "answer_a": "209 Millions",
+    "answer_b": "170 Millions",
+    "answer_c": "260 Millions",
+    "answer_d": "300 Millions",
+    "correct_answer": "a"
+  },
+  {
+    "question": "What is the capital of Lebanon",
+    "answer_a": "Bern",
+    "answer_b": "Beirut",
+    "answer_c": "Bissau",
+    "answer_d": "Oslo",
+    "correct_answer": "b"
+  },
+  {
+    "question": "What is 7 Foot in meters",
+    "answer_a": "about 1 meter",
+    "answer_b": "about 2 meters",
+    "answer_c": "about 3 meters",
+    "answer_d": "about 4 meters",
+    "correct_answer": "b"
+  },
+  {
+    "question": "46 * 77 =?",
+    "answer_a": "2942",
+    "answer_b": "3842",
+    "answer_c": "4277",
+    "answer_d": "3542",
+    "correct_answer": "d"
+  }
+]

@@ -2,14 +2,16 @@ package dk.catnip.android.android_app.control;
 
 import android.app.Activity;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,21 +24,11 @@ public class JsonResourceReader {
     }
 
     public static List<Question> loadQuestions(Activity activity, int resourceId) {
-        List<Question> questions = new ArrayList<>();
-        try {
-            JSONObject obj = new JSONObject(readFile(activity, resourceId));
-
-            JSONArray questionsJson = obj.getJSONArray("questions");
-            int length = questionsJson.length();
-            for (int i = 0; i < length; i++) {
-                JSONObject questionJson = questionsJson.getJSONObject(i);
-                questions.add(Question.fromJsonObject(questionJson));
-            }
-        } catch (JSONException ex) {
-            throw new RuntimeException(ex);
-        }
-
-        return questions;
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .create();
+        Type listType = new TypeToken<ArrayList<Question>>() {}.getType();
+        return gson.fromJson(readFile(activity, resourceId), listType);
     }
 
     private static String readFile(Activity activity, int resourceId) {
