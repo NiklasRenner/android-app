@@ -14,16 +14,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import dk.catnip.android.android_app.model.ButtonId;
 import dk.catnip.android.android_app.model.Question;
 
-public class JsonMapper {
+public class JsonResourceReader {
 
-    private JsonMapper() {
+    private JsonResourceReader() {
         //don't
     }
 
-    //TODO refac: use gson
     public static List<Question> loadQuestions(Activity activity, int resourceId) {
         List<Question> questions = new ArrayList<>();
         try {
@@ -33,17 +31,7 @@ public class JsonMapper {
             int length = questionsJson.length();
             for (int i = 0; i < length; i++) {
                 JSONObject questionJson = questionsJson.getJSONObject(0);
-
-                String questionStr = questionJson.getString("question");
-                String answerA = questionJson.getString("answer_a");
-                String answerB = questionJson.getString("answer_b");
-                String answerC = questionJson.getString("answer_c");
-                String answerD = questionJson.getString("answer_d");
-                String correctAnswer = questionJson.getString("correct_answer");
-                ButtonId correctButtonId = ButtonId.fromString(correctAnswer);
-
-                Question question = new Question(questionStr, answerA, answerB, answerC, answerD, correctButtonId);
-                questions.add(question);
+                questions.add(Question.fromJsonObject(questionJson));
             }
         } catch (JSONException ex) {
             throw new RuntimeException(ex);

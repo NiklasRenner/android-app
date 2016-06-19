@@ -14,7 +14,7 @@ import java.util.List;
 
 import dk.catnip.android.android_app.R;
 import dk.catnip.android.android_app.control.DataAccessor;
-import dk.catnip.android.android_app.control.JsonMapper;
+import dk.catnip.android.android_app.control.JsonResourceReader;
 import dk.catnip.android.android_app.model.ButtonId;
 import dk.catnip.android.android_app.model.Question;
 import dk.catnip.android.android_app.utils.Constants;
@@ -53,7 +53,7 @@ public class QuizActivity extends AppCompatActivity {
         scoreText = (TextView) findViewById(R.id.text_pts);
 
         //setup questions
-        questions = JsonMapper.loadQuestions(this, R.raw.default_questions);
+        questions = JsonResourceReader.loadQuestions(this, R.raw.default_questions);
 
         //set first question on view
         setupQuestion(questions.get(counter));
