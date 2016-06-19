@@ -1,4 +1,4 @@
-package dk.catnip.android.android_app;
+package dk.catnip.android.android_app.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
