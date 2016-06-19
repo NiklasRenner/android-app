@@ -19,7 +19,7 @@ public class DataAccessor {
         this.context = context;
     }
 
-    public List<Entry> loadHighScore() {
+    public List<Entry> loadHighScores() {
         String data = getSharedPreferences().getString(Constants.SCORE_DATA, null);
 
         List<Entry> highscores = fromCacheFormat(data);
@@ -33,7 +33,7 @@ public class DataAccessor {
     }
 
     public List<Entry> saveHighScore(String name, int score) {
-        List<Entry> entries = loadHighScore();
+        List<Entry> entries = loadHighScores();
 
         //create new from input
         Entry entry = new Entry(name, score);
@@ -57,6 +57,7 @@ public class DataAccessor {
     public List<Entry> resetHighscores() {
         List<Entry> entries = createDefault();
         saveHighScores(entries);
+
         return entries;
     }
 
