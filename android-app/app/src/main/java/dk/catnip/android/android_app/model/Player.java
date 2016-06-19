@@ -17,7 +17,16 @@ public class Player {
 
     public void wrongAnswer(){
         score += Constants.WRONG_ANSWER_POINTS;
+        if (lives >0){
+            lives--;
+        }
+
     }
+
+    public boolean isAlive() {
+        return lives > 0;
+    }
+
 
     public void correctAnswer(){
         score += Constants.CORRECT_ANSWER_POINTS;

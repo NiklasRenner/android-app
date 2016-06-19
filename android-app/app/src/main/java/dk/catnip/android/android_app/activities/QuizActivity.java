@@ -18,7 +18,6 @@ import dk.catnip.android.android_app.control.JsonResourceReader;
 import dk.catnip.android.android_app.model.ButtonId;
 import dk.catnip.android.android_app.model.Player;
 import dk.catnip.android.android_app.model.Question;
-import dk.catnip.android.android_app.utils.Constants;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -29,6 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView questionText;
     private Button[] buttons = new Button[4];
     private TextView scoreText;
+    private TextView livesText;
     private DataAccessor dao;
 
     private List<Question> questions = new ArrayList<>();
@@ -53,11 +53,13 @@ public class QuizActivity extends AppCompatActivity {
         buttons[3] = (Button) findViewById(R.id.button_d);
         questionText = (TextView) findViewById(R.id.text_question);
         scoreText = (TextView) findViewById(R.id.text_pts);
+        livesText = (TextView) findViewById(R.id.text_lives);
 
         player = new Player(dao.loadName());
 
         //setup questions
         questions = JsonResourceReader.loadQuestions(this, R.raw.default_questions);
+        livesText.setText(String.format("lives: %s", player.getLives()));
 
         //set first question on view
         setupQuestion(questions.get(counter));
@@ -89,6 +91,7 @@ public class QuizActivity extends AppCompatActivity {
             }
 
             scoreText.setText(String.format("score: %s", player.getScore()));
+            livesText.setText(String.format("lives: %s", player.getLives()));
             isAnswered = true;
         }
     }
@@ -110,14 +113,14 @@ public class QuizActivity extends AppCompatActivity {
 
     public void nextQuestion(View v) {
         if (isAnswered) {
-            if (counter >= questions.size()) {
+            if (!player.isAlive() || counter >= questions.size()) {
                 dao.saveHighScore(player);
                 showMainMenu();
-                return;
+            } else {
+                setupQuestion(questions.get(counter));
+                counter++;
+                resetButtons();
             }
-            setupQuestion(questions.get(counter));
-            counter++;
-            resetButtons();
         }
     }
 

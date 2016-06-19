@@ -78,8 +78,20 @@
         android:layout_height="wrap_content"
         android:text="score: 0"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/text_lives"
         android:layout_alignParentEnd="true"
-        android:gravity="center_horizontal" />
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="lives: 0"
+        android:id="@+id/text_lives"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/button_a"
+        android:gravity="center" />
 
 </RelativeLayout>
