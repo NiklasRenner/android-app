@@ -39,6 +39,9 @@ public class Question {
     }
 
     public ButtonId getCorrectAnswer() {
+        //TODO refac: figure out a better way
+        //conversion done here, since gson can't convert to enum
         return ButtonId.fromString(correctAnswer);
     }
+
 }

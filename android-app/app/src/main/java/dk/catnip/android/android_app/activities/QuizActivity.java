@@ -9,35 +9,29 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 import dk.catnip.android.android_app.R;
 import dk.catnip.android.android_app.control.DataAccessor;
-import dk.catnip.android.android_app.control.JsonResourceReader;
 import dk.catnip.android.android_app.model.ButtonId;
 import dk.catnip.android.android_app.model.Player;
 import dk.catnip.android.android_app.model.Question;
+import dk.catnip.android.android_app.utils.Constants;
 
 public class QuizActivity extends AppCompatActivity {
 
-    private static final int GREY = 0xFFDDDDDD;
-    private static final int RED = 0xFFFF0000;
-    private static final int GREEN = 0xFF00FF00;
-
     private TextView questionText;
-    private Button[] buttons = new Button[4];
-    private TextView scoreText;
     private TextView livesText;
+    private TextView scoreText;
+    private Button[] buttons;
+
     private DataAccessor dao;
 
-    private List<Question> questions = new ArrayList<>();
-    private int counter = 0;
-
-    private ButtonId correctAnswer;
-    private boolean isAnswered = false;
-
     private Player player;
+
+    private Iterator<Question> questions;
+    private Question question;
+    private boolean isAnswered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +40,7 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         //get refs to components
-        dao = new DataAccessor(getApplicationContext());
+        buttons = new Button[4];
         buttons[0] = (Button) findViewById(R.id.button_a);
         buttons[1] = (Button) findViewById(R.id.button_b);
         buttons[2] = (Button) findViewById(R.id.button_c);
@@ -55,45 +49,58 @@ public class QuizActivity extends AppCompatActivity {
         scoreText = (TextView) findViewById(R.id.text_pts);
         livesText = (TextView) findViewById(R.id.text_lives);
 
+        //create player
+        dao = new DataAccessor(getApplicationContext());
         player = new Player(dao.loadName());
-
-        //setup questions
-        questions = JsonResourceReader.loadQuestions(this, R.raw.default_questions);
         updateLives();
 
-        //set first question on view
-        setupQuestion(questions.get(counter));
-        counter++;
-    }
-
-    private void setupQuestion(Question question) {
-        questionText.setText(question.getQuestion());
-        buttons[0].setText(question.getAnswerA());
-        buttons[1].setText(question.getAnswerB());
-        buttons[2].setText(question.getAnswerC());
-        buttons[3].setText(question.getAnswerD());
-        correctAnswer = question.getCorrectAnswer();
-        isAnswered = false;
+        //setup questions
+        questions = dao.loadQuestions(this, R.raw.default_questions);
+        goToNextQuestion();
     }
 
     public void answerClick(View v) {
         if (!isAnswered) {
             resetButtons();
 
-            ButtonId id = mapButtonId(v.getId());
-            if (id == correctAnswer) {
-                player.correctAnswer();
-                setButtonColor(buttons[id.getId()], GREEN);
+            ButtonId selectedAnswer = mapButtonId(v.getId());
+            ButtonId correctAnswer = question.getCorrectAnswer();
+            if (selectedAnswer == correctAnswer) {
+                player.answeredCorrect();
+                setButtonColor(buttons[selectedAnswer.getId()], Constants.GREEN);
             } else {
-                setButtonColor(buttons[id.getId()], RED);
-                setButtonColor(buttons[correctAnswer.getId()], GREEN);
-                player.wrongAnswer();
+                setButtonColor(buttons[selectedAnswer.getId()], Constants.RED);
+                setButtonColor(buttons[correctAnswer.getId()], Constants.GREEN);
+                player.answeredWrong();
             }
 
             updateScore();
             updateLives();
             isAnswered = true;
         }
+    }
+
+    public void nextClick(View v) {
+        if (isAnswered) {
+            if (!player.isAlive() || !questions.hasNext()) {
+                dao.updateHighscores(player);
+                showMainMenu();
+            } else {
+                goToNextQuestion();
+                resetButtons();
+            }
+        }
+    }
+
+    private void goToNextQuestion() {
+        question = questions.next();
+
+        questionText.setText(question.getQuestion());
+        buttons[0].setText(question.getAnswerA());
+        buttons[1].setText(question.getAnswerB());
+        buttons[2].setText(question.getAnswerC());
+        buttons[3].setText(question.getAnswerD());
+        isAnswered = false;
     }
 
     private ButtonId mapButtonId(int id) {
@@ -111,19 +118,6 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-    public void nextQuestion(View v) {
-        if (isAnswered) {
-            if (!player.isAlive() || counter >= questions.size()) {
-                dao.saveHighScore(player);
-                showMainMenu();
-            } else {
-                setupQuestion(questions.get(counter));
-                counter++;
-                resetButtons();
-            }
-        }
-    }
-
     private void showMainMenu() {
         Intent resultIntent = new Intent();
         setResult(Activity.RESULT_OK, resultIntent);
@@ -132,12 +126,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private void resetButtons() {
         for (Button button : buttons) {
-            setButtonColor(button, GREY);
+            setButtonColor(button, Constants.GREY);
         }
-    }
-
-    private void setButtonColor(Button button, int color) {
-        button.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
     }
 
     private void updateScore() {
@@ -147,4 +137,9 @@ public class QuizActivity extends AppCompatActivity {
     private void updateLives() {
         livesText.setText(String.format("lives: %s", player.getLives()));
     }
+
+    private void setButtonColor(Button button, int color) {
+        button.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
+    }
+
 }

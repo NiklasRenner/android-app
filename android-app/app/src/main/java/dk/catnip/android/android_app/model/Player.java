@@ -11,11 +11,11 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        this.lives = Constants.DEFAULT_LIVES;
+        this.lives = Constants.STARTING_LIVES;
         this.score = 0;
     }
 
-    public void wrongAnswer(){
+    public void answeredWrong(){
         score += Constants.WRONG_ANSWER_POINTS;
         if (lives >0){
             lives--;
@@ -28,7 +28,7 @@ public class Player {
     }
 
 
-    public void correctAnswer(){
+    public void answeredCorrect(){
         score += Constants.CORRECT_ANSWER_POINTS;
     }
 

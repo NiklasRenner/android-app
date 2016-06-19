@@ -18,19 +18,17 @@ public enum ButtonId {
         return id;
     }
 
-    //TODO refac: make more dynamic
     public static ButtonId fromString(String s) {
-        switch (s.toUpperCase()) {
-            case "A":
-                return A;
-            case "B":
-                return B;
-            case "C":
-                return C;
-            case "D":
-                return D;
-            default:
-                return UNDEFINED;
+        if (s == null) return null;
+
+        String name = s.toUpperCase();
+        for (ButtonId buttonId : ButtonId.values()) {
+            if (buttonId.name().equals(name)) {
+                return buttonId;
+            }
         }
+
+        return ButtonId.UNDEFINED;
     }
+
 }
