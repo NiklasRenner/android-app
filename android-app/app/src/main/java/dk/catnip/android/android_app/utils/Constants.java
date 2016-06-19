@@ -18,4 +18,7 @@ public final class Constants {
     public static final int QUIZ_CODE = 100;
     public static final int END_CODE = 105;
 
+    public static final int CORRECT_ANSWER_POINTS = 100;
+    public static final int WRONG_ANSWER_POINTS = -50;
+
 }

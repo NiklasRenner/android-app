@@ -16,6 +16,7 @@ import dk.catnip.android.android_app.R;
 import dk.catnip.android.android_app.control.DataAccessor;
 import dk.catnip.android.android_app.model.ButtonId;
 import dk.catnip.android.android_app.model.Question;
+import dk.catnip.android.android_app.utils.Constants;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -95,12 +96,12 @@ public class QuizActivity extends AppCompatActivity {
 
             ButtonId id = mapButtonId(v.getId());
             if (id == correctAnswer) {
-                score += 500;
+                score += Constants.CORRECT_ANSWER_POINTS;
                 setButtonColor(buttons[id.getId()], GREEN);
             } else {
                 setButtonColor(buttons[id.getId()], RED);
                 setButtonColor(buttons[correctAnswer.getId()], GREEN);
-                score -= 500;
+                score += Constants.WRONG_ANSWER_POINTS;
             }
 
             scoreText.setText(String.format("score: %s", score));

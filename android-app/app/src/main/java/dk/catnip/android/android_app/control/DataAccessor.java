@@ -26,6 +26,7 @@ public class DataAccessor {
 
         if (highscores == null) {
             highscores = createDefault();
+            highscores = fix(highscores);
             saveHighScores(highscores);
         }
 
