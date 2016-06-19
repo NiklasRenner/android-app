@@ -36,7 +36,7 @@ public class EndActivity extends AppCompatActivity {
 
         dao = new DataAccessor(getApplicationContext());
 
-        List<Entry> entries = dao.loadHighScore();
+        List<Entry> entries = dao.loadHighScores();
         setupView(entries);
     }
 

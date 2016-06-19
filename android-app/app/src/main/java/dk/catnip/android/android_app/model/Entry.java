@@ -30,7 +30,7 @@ public class Entry implements Comparable<Entry> {
     public int compareTo(Entry another) {
         if (score > another.getScore()) {
             return -1;
-        } else if (another.getScore() > score) {
+        } else if (score < another.getScore()) {
             return 1;
         } else {
             return 0;

@@ -30,7 +30,7 @@ public class JsonResourceReader {
             JSONArray questionsJson = obj.getJSONArray("questions");
             int length = questionsJson.length();
             for (int i = 0; i < length; i++) {
-                JSONObject questionJson = questionsJson.getJSONObject(0);
+                JSONObject questionJson = questionsJson.getJSONObject(i);
                 questions.add(Question.fromJsonObject(questionJson));
             }
         } catch (JSONException ex) {
