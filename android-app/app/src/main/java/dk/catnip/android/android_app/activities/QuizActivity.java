@@ -23,6 +23,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView questionText;
     private TextView livesText;
     private TextView scoreText;
+    private Button nextButton;
     private Button[] buttons;
 
     private DataAccessor dao;
@@ -40,14 +41,16 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         //get refs to components
+        questionText = (TextView) findViewById(R.id.text_question);
+        livesText = (TextView) findViewById(R.id.text_lives);
+        scoreText = (TextView) findViewById(R.id.text_pts);
+        nextButton = (Button) findViewById(R.id.button_next);
+
         buttons = new Button[4];
         buttons[0] = (Button) findViewById(R.id.button_a);
         buttons[1] = (Button) findViewById(R.id.button_b);
         buttons[2] = (Button) findViewById(R.id.button_c);
         buttons[3] = (Button) findViewById(R.id.button_d);
-        questionText = (TextView) findViewById(R.id.text_question);
-        scoreText = (TextView) findViewById(R.id.text_pts);
-        livesText = (TextView) findViewById(R.id.text_lives);
 
         //create player
         dao = new DataAccessor(getApplicationContext());
@@ -61,6 +64,7 @@ public class QuizActivity extends AppCompatActivity {
 
     public void answerClick(View v) {
         if (!isAnswered) {
+            isAnswered = true;
             resetButtons();
 
             ButtonId selectedAnswer = mapButtonId(v.getId());
@@ -76,7 +80,7 @@ public class QuizActivity extends AppCompatActivity {
 
             updateScore();
             updateLives();
-            isAnswered = true;
+            updateNextButtonText();
         }
     }
 
@@ -136,6 +140,14 @@ public class QuizActivity extends AppCompatActivity {
 
     private void updateLives() {
         livesText.setText(String.format("lives: %s", player.getLives()));
+    }
+
+    private void updateNextButtonText() {
+        if (!player.isAlive()) {
+            nextButton.setText("Game over");
+        } else if (!questions.hasNext()) {
+            nextButton.setText("Go to highscores");
+        }
     }
 
     private void setButtonColor(Button button, int color) {
