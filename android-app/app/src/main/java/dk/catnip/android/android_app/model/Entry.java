@@ -12,6 +12,11 @@ public class Entry implements Comparable<Entry> {
         this.score = score;
     }
 
+    public Entry(Player player){
+        this.name = player.getName();
+        this.score = player.getScore();
+    }
+
     public String getName() {
         return name;
     }

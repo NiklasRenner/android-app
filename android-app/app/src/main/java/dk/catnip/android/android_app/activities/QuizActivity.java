@@ -16,6 +16,7 @@ import dk.catnip.android.android_app.R;
 import dk.catnip.android.android_app.control.DataAccessor;
 import dk.catnip.android.android_app.control.JsonResourceReader;
 import dk.catnip.android.android_app.model.ButtonId;
+import dk.catnip.android.android_app.model.Player;
 import dk.catnip.android.android_app.model.Question;
 import dk.catnip.android.android_app.utils.Constants;
 
@@ -35,7 +36,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private ButtonId correctAnswer;
     private boolean isAnswered = false;
-    private int score = 0;
+
+    private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,8 @@ public class QuizActivity extends AppCompatActivity {
         buttons[3] = (Button) findViewById(R.id.button_d);
         questionText = (TextView) findViewById(R.id.text_question);
         scoreText = (TextView) findViewById(R.id.text_pts);
+
+        player = new Player(dao.loadName());
 
         //setup questions
         questions = JsonResourceReader.loadQuestions(this, R.raw.default_questions);
@@ -76,15 +80,15 @@ public class QuizActivity extends AppCompatActivity {
 
             ButtonId id = mapButtonId(v.getId());
             if (id == correctAnswer) {
-                score += Constants.CORRECT_ANSWER_POINTS;
+                player.correctAnswer();
                 setButtonColor(buttons[id.getId()], GREEN);
             } else {
                 setButtonColor(buttons[id.getId()], RED);
                 setButtonColor(buttons[correctAnswer.getId()], GREEN);
-                score += Constants.WRONG_ANSWER_POINTS;
+                player.wrongAnswer();
             }
 
-            scoreText.setText(String.format("score: %s", score));
+            scoreText.setText(String.format("score: %s", player.getScore()));
             isAnswered = true;
         }
     }
@@ -107,7 +111,7 @@ public class QuizActivity extends AppCompatActivity {
     public void nextQuestion(View v) {
         if (isAnswered) {
             if (counter >= questions.size()) {
-                saveScore();
+                dao.saveHighScore(player);
                 showMainMenu();
                 return;
             }
@@ -115,11 +119,6 @@ public class QuizActivity extends AppCompatActivity {
             counter++;
             resetButtons();
         }
-    }
-
-    private void saveScore() {
-        String name = dao.loadName();
-        dao.saveHighScore(name, score);
     }
 
     private void showMainMenu() {

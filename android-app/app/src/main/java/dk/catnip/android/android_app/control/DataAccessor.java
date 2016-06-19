@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import dk.catnip.android.android_app.model.Entry;
+import dk.catnip.android.android_app.model.Player;
 import dk.catnip.android.android_app.utils.Constants;
 
 public class DataAccessor {
@@ -32,11 +33,11 @@ public class DataAccessor {
         return highscores;
     }
 
-    public List<Entry> saveHighScore(String name, int score) {
+    public List<Entry> saveHighScore(Player player) {
         List<Entry> entries = loadHighScores();
 
         //create new from input
-        Entry entry = new Entry(name, score);
+        Entry entry = new Entry(player);
         //add to highscore
         entries.add(entry);
         //create new highscore from current

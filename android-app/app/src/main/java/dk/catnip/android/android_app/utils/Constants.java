@@ -20,5 +20,7 @@ public final class Constants {
 
     public static final int CORRECT_ANSWER_POINTS = 100;
     public static final int WRONG_ANSWER_POINTS = -50;
+    public static final int DEFAULT_LIVES = 3;
+    public static final int WRONG_ANSWER_LIVES = -1;
 
 }
