@@ -59,7 +59,7 @@ public class QuizActivity extends AppCompatActivity {
 
         //setup questions
         questions = JsonResourceReader.loadQuestions(this, R.raw.default_questions);
-        livesText.setText(String.format("lives: %s", player.getLives()));
+        updateLives();
 
         //set first question on view
         setupQuestion(questions.get(counter));
@@ -76,7 +76,7 @@ public class QuizActivity extends AppCompatActivity {
         isAnswered = false;
     }
 
-    public void buttonClick(View v) {
+    public void answerClick(View v) {
         if (!isAnswered) {
             resetButtons();
 
@@ -90,8 +90,8 @@ public class QuizActivity extends AppCompatActivity {
                 player.wrongAnswer();
             }
 
-            scoreText.setText(String.format("score: %s", player.getScore()));
-            livesText.setText(String.format("lives: %s", player.getLives()));
+            updateScore();
+            updateLives();
             isAnswered = true;
         }
     }
@@ -138,5 +138,13 @@ public class QuizActivity extends AppCompatActivity {
 
     private void setButtonColor(Button button, int color) {
         button.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
+    }
+
+    private void updateScore() {
+        scoreText.setText(String.format("score: %s", player.getScore()));
+    }
+
+    private void updateLives() {
+        livesText.setText(String.format("lives: %s", player.getLives()));
     }
 }
