@@ -89,12 +89,44 @@
       "correct_answer": "b"
     },
     {
-      "question": "",
-      "answer_a": "Chickens",
-      "answer_b": "Holy Street Performer",
-      "answer_c": "Rings",
-      "answer_d": "Castle",
-      "correct_answer": "c"
+      "question": "How many pieces are there in chess",
+      "answer_a": "32",
+      "answer_b": "16",
+      "answer_c": "36",
+      "answer_d": "42",
+      "correct_answer": "a"
+    },
+    {
+      "question": "How many continents in the world?",
+      "answer_a": "6",
+      "answer_b": "7",
+      "answer_c": "8",
+      "answer_d": "9",
+      "correct_answer": "b"
+    },
+    {
+      "question": "How long was the Gulf War?",
+      "answer_a": "3 Years",
+      "answer_b": "2 Years",
+      "answer_c": "1 Year",
+      "answer_d": "About 6 Months",
+      "correct_answer": "d"
+    },
+    {
+      "question": "How many people live in Brazil",
+      "answer_a": "209 Millions",
+      "answer_b": "170 Millions",
+      "answer_c": "260 Millions",
+      "answer_d": "300 Millions",
+      "correct_answer": "a"
+    },
+    {
+      "question": "What is the capital of Lebanon",
+      "answer_a": "Bern",
+      "answer_b": "Beirut",
+      "answer_c": "Bissau",
+      "answer_d": "Oslo",
+      "correct_answer": "b"
     },
   ]
 }
