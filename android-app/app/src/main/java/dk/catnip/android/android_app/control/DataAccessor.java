@@ -26,7 +26,6 @@ public class DataAccessor {
 
         if (highscores == null) {
             highscores = createDefault();
-            highscores = fix(highscores);
             saveHighScores(highscores);
         }
 
@@ -53,6 +52,12 @@ public class DataAccessor {
         SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.putString(Constants.SCORE_DATA, data);
         editor.apply();
+    }
+
+    public List<Entry> resetHighscores() {
+        List<Entry> entries = createDefault();
+        saveHighScores(entries);
+        return entries;
     }
 
     public void saveName(String name) {
@@ -104,7 +109,7 @@ public class DataAccessor {
             entries.add(entry);
         }
 
-        return entries;
+        return fix(entries);
     }
 
     private List<Entry> fix(List<Entry> entries) {
